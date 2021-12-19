@@ -8,6 +8,7 @@
   <ItemGroup>
     <PackageReference Include="bootstrap" Version="5.1.2" />
     <PackageReference Include="MailKit" Version="2.15.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="5.0.12" />
     <PackageReference Include="Microsoft.AspNetCore.Http.Features" Version="5.0.13" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="5.0.12" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="5.0.13" />
@@ -26,6 +27,12 @@
 
   <ItemGroup>
     <ProjectReference Include="..\OnVen.Common\OnVen.Common.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\Categories\" />
+    <Folder Include="wwwroot\Users\" />
+    <Folder Include="wwwroot\Products\" />
   </ItemGroup>
 
 </Project>

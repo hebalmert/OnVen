@@ -1,5 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using OnVen.Common.Entities;
+using OnVen.Web.Data.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,11 +9,13 @@ using System.Threading.Tasks;
 
 namespace OnVen.Web.Data
 {
-    public class DataContext : DbContext
+    public class DataContext : IdentityDbContext<User>
     {
         public DataContext(DbContextOptions<DataContext> options) : base(options)
         {
         }
+
+        public DbSet<Category> Categories { get; set; }
 
         public DbSet<City> Cities { get; set; }
 
@@ -19,10 +23,22 @@ namespace OnVen.Web.Data
 
         public DbSet<Department> Departments { get; set; }
 
+        public DbSet<Order> Orders { get; set; }
+
+        public DbSet<OrderDetail> OrderDetails { get; set; }
+
+
+        public DbSet<Product> Products { get; set; }
+
+        public DbSet<ProductImage> ProductImages { get; set; }
+
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
 
+            modelBuilder.Entity<Category>()
+                .HasIndex(t => t.Name).IsUnique();
 
 
             modelBuilder.Entity<Country>(cou =>
@@ -44,6 +60,10 @@ namespace OnVen.Web.Data
             });
 
 
+            modelBuilder.Entity<Product>()
+                .HasIndex(t => t.Name).IsUnique();
+
         }
+
     }
 }

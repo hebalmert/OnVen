@@ -1,0 +1,133 @@
+﻿@model OnVen.Common.Entities.Product
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs5/dt-1.11.3/b-2.0.1/datatables.min.css" />
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="shadow  bg-white rounded">
+            <div class="card">
+                <div class="card-header"><h4>Product Detail</h4></div>
+                <div class="card-body">
+                    <div class="form-row">
+                        <div class="col-md-12 mb-1">
+                            <div class="col-md-12">
+                                <strong>@Html.DisplayNameFor(model => model.Name):</strong>
+                                @Html.DisplayFor(model => model.Name)
+                                <p></p>
+                            </div>
+                            <div class="col-md-12">
+                                <strong>@Html.DisplayNameFor(model => model.Description):</strong>
+                                @Html.DisplayFor(model => model.Description)
+                                <p></p>
+                            </div>
+                            <div class="col-md-12">
+                                <strong>@Html.DisplayNameFor(model => model.Category.Name):</strong>
+                                @Html.DisplayFor(model => model.Category.Name)
+                                <p></p>
+                            </div>
+                            <div class="col-md-12">
+                                <strong>@Html.DisplayNameFor(model => model.Price):</strong>
+                                @Html.DisplayFor(model => model.Price)
+                                <p></p>
+                            </div>
+                            <div class="col-md-12">
+                                <strong>@Html.DisplayNameFor(model => model.IsActive):</strong>
+                                @Html.DisplayFor(model => model.IsActive)
+                                <p></p>
+                            </div>
+                            <div class="col-md-12">
+                                <strong>@Html.DisplayNameFor(model => model.IsStarred):</strong>
+                                @Html.DisplayFor(model => model.IsStarred)
+                                <p></p>
+                            </div>
+                            <div class="col-md-12">
+                                <strong>@Html.DisplayNameFor(model => model.ProductImagesNumber):</strong>
+                                @Html.DisplayFor(model => model.ProductImagesNumber)
+                                <p></p>
+                            </div>
+                            <p></p>
+                            <div>
+                                <a asp-action="Index" class="btn btn-outline-success btn-sm">
+                                    <i class="fa fa-backspace">
+                                    </i>Back
+                                </a>
+                                <a asp-action="Edit" asp-route-id="@Model.ProductId" class="btn btn-outline-warning btn-sm">
+                                    <i class="fa fa-pencil-alt">
+                                    </i>Edit
+                                </a>
+                                <a asp-action="AddImage" asp-route-id="@Model.ProductId" class="btn btn-outline-primary btn-sm">
+                                    <i class="fa fa-plus"></i>
+                                    New Image
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<br />
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="shadow  bg-white rounded">
+            <div class="card">
+                <div class="card-header"><h4>Image Gallery</h4></div>
+                <div class="card-body">
+
+                    <table class="table table-responsive table-striped" id="MyTable">
+                        <thead>
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.ProductImages.FirstOrDefault().ImageFullPath)
+                                </th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.ProductImages)
+                            {
+                                <tr>
+                                    <td>
+                                        <img src="@item.ImageFullPath" style="width:200px;height:200px;max-width: 100%; height: auto;" />
+                                    </td>
+                                    <td>
+                                        <button data-id="@item.ProductImageId" class="btn btn-outline-danger btn-sm deleteItem" data-toggle="modal" data-target="#deleteDialog"><i class="fa fa-trash-alt"></i></button>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<partial name="_DeleteDialog" />
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script type="text/javascript" src="https://cdn.datatables.net/v/bs5/dt-1.11.3/b-2.0.1/datatables.min.js"></script>
+    <script src="/js/deleteDialog.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#MyTable').DataTable({
+                "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]]
+            });
+
+            // Delete item
+            sc_deleteDialog.openModal('deleteItem', true, 'btnYesDelete', '/Products/DeleteImage/', false);
+        });
+    </script>
+}
+
