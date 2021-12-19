@@ -1,0 +1,41 @@
+﻿@model OnVen.Common.Entities.City
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="shadow  bg-white rounded">
+            <div class="card">
+                <div class="card-header"><h4>Edit City</h4></div>
+                <div class="card-body">
+                    <form asp-action="EditCity">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <input type="hidden" asp-for="CityId" />
+                        <input type="hidden" asp-for="DepartmentId" />
+
+                        <partial name="_City" />
+
+                        <div class="form-group">
+                            <a asp-action="DetailsDepartment" asp-route-id="@Model.DepartmentId" class="btn btn-outline-success btn-sm">
+                                <i class="fa fa-backspace"></i>
+                                Back
+                            </a>
+
+                            <button type="submit" value="Save" class="btn btn-outline-primary btn-sm">
+                                <i class="fa fa-save"></i>
+                                Save
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

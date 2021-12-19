@@ -1,0 +1,51 @@
+﻿@model OnVen.Common.Entities.Country
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="shadow  bg-white rounded">
+            <div class="card">
+                <div class="card-header"><h4>Country Edit</h4></div>
+                <div class="card-body">
+                    <form asp-action="Edit">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <input type="hidden" asp-for="CountryId" />
+
+                        <div class="form-row">
+                            <div class="col-md-8 mb-2">
+
+                                <div class="col-md-12">
+                                    <label asp-for="Name" class="control-label"></label>
+                                    <input asp-for="Name" class="form-control" />
+                                    <span asp-validation-for="Name" class="text-danger"></span>
+                                </div>
+                                <br />
+                                <div class="col-md-12">
+                                    <button type="button" class="btn btn-outline-success btn-sm" onclick="location.href = '@Url.Action("Details", new  { id = Model.CountryId })'">
+                                        <i class="fa fa-backspace"></i>
+                                        Back
+                                    </button>
+
+                                    <button type="submit" class="btn btn-outline-primary btn-sm">
+                                        <i class="fa fa-save"></i>
+                                        Save
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
