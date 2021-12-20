@@ -21,8 +21,8 @@ namespace OnVen.Common.Entities
         //TODO: Pending to put the correct paths
         [Display(Name = "Image")]
         public string ImageFullPath => ImageId == string.Empty
-            ? $"http://onsale.linkonext.com/Images/noimage.png"
-            : $"http://onsale.linkonext.com/Products/{ImageId}";
+            ? $"http://onven.linkonext.com/Images/noimage.png"
+            : $"http://onven.linkonext.com/Products/{ImageId}";
 
     }
 }

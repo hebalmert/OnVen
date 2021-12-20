@@ -36,10 +36,15 @@ namespace OnVen.Web.Models
         [Display(Name = "Image")]
         public string ImageId { get; set; }
 
+        //TODO: Pending to put the correct paths
         [Display(Name = "Image")]
         public string ImageFullPath => ImageId == string.Empty
-            ? $"https://OnSaleweb.azurewebsites.net/images/noimage.png"
-            : $"https://onsale.blob.core.windows.net/users/{ImageId}";
+            ? $"http://onven.linkonext.com/Images/noimage.png"
+            : $"http://onven.linkonext.com/users/{ImageId}";
+
+        //? $"https://onven.azurewebsites.net/images/noimage.png"
+        //: $"https://onven.blob.core.windows.net/users/{ImageId}";
+
 
         [Display(Name = "Image")]
         public IFormFile ImageFile { get; set; }

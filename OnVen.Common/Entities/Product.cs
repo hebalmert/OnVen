@@ -41,7 +41,7 @@ namespace OnVen.Common.Entities
         //TODO: Pending to put the correct paths
         [Display(Name = "Image")]
         public string ImageFullPath => ProductImages == null || ProductImages.Count == 0
-            ? $"http://onsale.linkonext.com/Images/noimage.png"
+            ? $"http://onven.linkonext.com/Images/noimage.png"
             : ProductImages.FirstOrDefault().ImageFullPath;
 
     }
