@@ -16,10 +16,9 @@ namespace OnVen.Common.Entities
         [Display(Name = "City")]
         public string Name { get; set; }
 
-        [JsonIgnore]
         public int DepartmentId { get; set; }
 
-        [JsonIgnore]
-        public Department Department { get; set; }
+        //[JsonIgnore]
+        //public Department Department { get; set; }
     }
 }

@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -16,7 +17,6 @@ namespace OnVen.Common.Entities
         [Display(Name = "Department")]
         public string Name { get; set; }
 
-        [JsonIgnore]
         public int CountryId { get; set; }
 
 
@@ -24,8 +24,9 @@ namespace OnVen.Common.Entities
         public int CitiesNumber => Cities == null ? 0 : Cities.Count;
 
 
-        [JsonIgnore]
-        public Country Country { get; set; }
+        //[JsonIgnore]
+        //public Country Country { get; set; }
+
 
         public ICollection<City> Cities { get; set; }
     }

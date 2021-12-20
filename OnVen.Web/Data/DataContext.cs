@@ -44,19 +44,19 @@ namespace OnVen.Web.Data
             modelBuilder.Entity<Country>(cou =>
             {
                 cou.HasIndex("Name").IsUnique();
-                cou.HasMany(c => c.Departments).WithOne(d => d.Country).OnDelete(DeleteBehavior.Restrict);
+
             });
 
             modelBuilder.Entity<Department>(dep =>
             {
                 dep.HasIndex("Name", "CountryId").IsUnique();
-                dep.HasOne(d => d.Country).WithMany(c => c.Departments).OnDelete(DeleteBehavior.Restrict);
+
             });
 
             modelBuilder.Entity<City>(cit =>
             {
                 cit.HasIndex("Name", "DepartmentId").IsUnique();
-                cit.HasOne(c => c.Department).WithMany(d => d.Cities).OnDelete(DeleteBehavior.Restrict);
+
             });
 
 

@@ -11,23 +11,19 @@ namespace OnVen.Web.Controllers.API
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CountriesController : ControllerBase
+    public class ProductsController : ControllerBase
     {
         private readonly DataContext _context;
 
-        public CountriesController(DataContext context)
+        public ProductsController(DataContext context)
         {
             _context = context;
         }
 
         [HttpGet]
-        public IActionResult GetCountries()
+        public IActionResult GetProducts()
         {
-            return Ok(_context.Countries
-                .Include(d=> d.Departments)
-                .ThenInclude(d=> d.Cities));
+            return Ok( _context.Products.Include(p=> p.ProductImages) );
         }
-
-
     }
 }

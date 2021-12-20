@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -13,7 +14,9 @@ namespace OnVen.Common.Entities
 
         public int ProductId { get; set; }
 
-        public Product Product { get; set; }
+        //[JsonIgnore]
+        //public Product Product { get; set; }
+
 
         [Display(Name = "Image")]
         public string ImageId { get; set; }

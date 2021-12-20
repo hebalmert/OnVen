@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
@@ -14,10 +15,8 @@ namespace OnVen.Common.Entities
         [Display(Name = "Country")]
         public string Name { get; set; }
 
-
         [Display(Name = "Departments Number")]
         public int DepartmentsNumber => Departments == null ? 0 : Departments.Count;
-
 
         public ICollection<Department> Departments { get; set; }
     }

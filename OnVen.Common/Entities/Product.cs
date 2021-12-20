@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -29,7 +30,10 @@ namespace OnVen.Common.Entities
 
         public int CategoryId { get; set; }
 
+
+        [JsonIgnore]
         public Category Category { get; set; }
+
 
         public ICollection<ProductImage> ProductImages { get; set; }
 
