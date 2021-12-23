@@ -1,3 +1,4 @@
+using OnVen.Common.Services;
 using OnVen.Prism.ViewModels;
 using OnVen.Prism.Views;
 using Prism;
@@ -25,6 +26,9 @@ namespace OnVen.Prism
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
             containerRegistry.RegisterSingleton<IAppInfo, AppInfoImplementation>();
+
+            //Para Inyeccion de Servicio
+            containerRegistry.Register<IApiService, ApiService>();
 
             containerRegistry.RegisterForNavigation<NavigationPage>();
             containerRegistry.RegisterForNavigation<MainPage, MainPageViewModel>();
