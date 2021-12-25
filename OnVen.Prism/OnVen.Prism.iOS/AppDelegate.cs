@@ -2,6 +2,7 @@
 using Prism;
 using Prism.Ioc;
 using Syncfusion.SfBusyIndicator.XForms.iOS;
+using Syncfusion.SfRotator.XForms.iOS;
 using UIKit;
 
 
@@ -26,6 +27,7 @@ namespace OnVen.Prism.iOS
 
             //Indicador de Actividad o Spining
             new SfBusyIndicatorRenderer();
+            new SfRotatorRenderer();
 
             //Manejo de Imagenes
             FFImageLoading.Forms.Platform.CachedImageRenderer.Init();

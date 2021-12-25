@@ -1,6 +1,7 @@
 ﻿using OnVen.Common.Entities;
 using OnVen.Common.Responses;
 using OnVen.Common.Services;
+using OnVen.Prism.ItemViewModels;
 using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Navigation;
@@ -12,11 +13,11 @@ using Xamarin.Essentials;
 
 namespace OnVen.Prism.ViewModels
 {
-	public class ProductsPageViewModel : ViewModelBase
-	{
+    public class ProductsPageViewModel : ViewModelBase
+    {
         private readonly INavigationService _navigationService;
         private readonly IApiService _apiService;
-        private ObservableCollection<Product> _product;
+        private ObservableCollection<ProductItemViewModel> _product;
         private bool _isRunning;
         private string _search;
         private DelegateCommand _searchCommand;
@@ -43,9 +44,10 @@ namespace OnVen.Prism.ViewModels
             LoadProductAsync();
         }
 
-        public ObservableCollection<Product> Products { 
-            get => _product; 
-            set => SetProperty(ref _product, value); 
+        public ObservableCollection<ProductItemViewModel> Products
+        {
+            get => _product;
+            set => SetProperty(ref _product, value);
         }
 
         public bool IsRunning
@@ -84,12 +86,36 @@ namespace OnVen.Prism.ViewModels
         {
             if (string.IsNullOrEmpty(Search))
             {
-                Products = new ObservableCollection<Product>(_myProducts);
+                Products = new ObservableCollection<ProductItemViewModel>(_myProducts.Select(p => new ProductItemViewModel(_navigationService)
+                {
+                    Category = p.Category,
+                    Description = p.Description,
+                    ProductId = p.ProductId,
+                    IsActive = p.IsActive,
+                    IsStarred = p.IsStarred,
+                    Name = p.Name,
+                    Price = p.Price,
+                    ProductImages = p.ProductImages
+                })
+                 .ToList());
+
             }
             else
             {
-                Products = new ObservableCollection<Product>(_myProducts
-                    .Where(p => p.Name.ToLower().Contains(Search.ToLower())));
+                Products = new ObservableCollection<ProductItemViewModel>(_myProducts.Select(p => new ProductItemViewModel(_navigationService)
+                {
+                    Category = p.Category,
+                    Description = p.Description,
+                    ProductId = p.ProductId,
+                    IsActive = p.IsActive,
+                    IsStarred = p.IsStarred,
+                    Name = p.Name,
+                    Price = p.Price,
+                    ProductImages = p.ProductImages
+                })
+                    .Where(p => p.Name.ToLower().Contains(Search.ToLower()))
+                    .ToList());
+
             }
         }
     }

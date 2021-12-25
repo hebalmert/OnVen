@@ -4,6 +4,7 @@ using Android.OS;
 using Prism;
 using Prism.Ioc;
 using Syncfusion.SfBusyIndicator.XForms.Droid;
+using Syncfusion.SfRotator.XForms.Droid;
 
 namespace OnVen.Prism.Droid
 {
@@ -22,6 +23,7 @@ namespace OnVen.Prism.Droid
 
             //Indicador de Actividad o Spining
             new SfBusyIndicatorRenderer();
+            new SfRotatorRenderer();
 
             //Para manejo de Imagenes
             FFImageLoading.Forms.Platform.CachedImageRenderer.Init(true);
