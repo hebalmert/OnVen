@@ -3,6 +3,7 @@ using Android.Content.PM;
 using Android.OS;
 using Prism;
 using Prism.Ioc;
+using Syncfusion.SfBusyIndicator.XForms.Droid;
 
 namespace OnVen.Prism.Droid
 {
@@ -18,6 +19,10 @@ namespace OnVen.Prism.Droid
             base.OnCreate(savedInstanceState);
 
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
+
+            //Indicador de Actividad o Spining
+            new SfBusyIndicatorRenderer();
+
             //Para manejo de Imagenes
             FFImageLoading.Forms.Platform.CachedImageRenderer.Init(true);
 

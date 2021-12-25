@@ -6,6 +6,15 @@
   <Application.Resources>
 
     <!-- Application resource dictionary -->
+      
+        <!-- Se Agrega la Direcion de donde se consumiran las API o Servicios  -->
+        <ResourceDictionary>
 
-  </Application.Resources>
+            <!-- Parameters -->
+            <x:String x:Key="UrlAPI">http://onven.linkonext.com</x:String>
+
+        </ResourceDictionary>
+
+
+    </Application.Resources>
 </prism:PrismApplication>

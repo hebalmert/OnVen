@@ -1,6 +1,7 @@
 ﻿using Foundation;
 using Prism;
 using Prism.Ioc;
+using Syncfusion.SfBusyIndicator.XForms.iOS;
 using UIKit;
 
 
@@ -22,6 +23,10 @@ namespace OnVen.Prism.iOS
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
             global::Xamarin.Forms.Forms.Init();
+
+            //Indicador de Actividad o Spining
+            new SfBusyIndicatorRenderer();
+
             //Manejo de Imagenes
             FFImageLoading.Forms.Platform.CachedImageRenderer.Init();
 
