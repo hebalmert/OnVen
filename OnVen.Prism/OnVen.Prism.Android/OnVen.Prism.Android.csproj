@@ -82,6 +82,7 @@
     <PackageReference Include="Prism.DryIoc.Forms" Version="8.0.0.1909" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Implementations\Localize.cs" />
     <Compile Include="MainApplication.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="SplashActivity.cs" />
@@ -123,6 +124,10 @@
     <AndroidResource Include="Resources\values\strings.xml" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\OnVen.Common\OnVen.Common.csproj">
+      <Project>{9D012806-8E3F-48A1-B6FE-693561EAC83C}</Project>
+      <Name>OnVen.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\OnVen.Prism\OnVen.Prism.csproj">
       <Project>{A682884C-CB44-4A89-B752-27BB634E0ABE}</Project>
       <Name>OnVen.Prism</Name>

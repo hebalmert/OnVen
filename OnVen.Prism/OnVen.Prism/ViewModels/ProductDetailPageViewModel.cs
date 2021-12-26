@@ -1,4 +1,5 @@
 ﻿using OnVen.Common.Entities;
+using OnVen.Prism.Helpers;
 using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Navigation;
@@ -16,7 +17,7 @@ namespace OnVen.Prism.ViewModels
 
         public ProductDetailPageViewModel(INavigationService navigationService) : base(navigationService)
         {
-            Title = "Product";
+            Title = Languages.Product;
         }
 
         public ObservableCollection<ProductImage> Images

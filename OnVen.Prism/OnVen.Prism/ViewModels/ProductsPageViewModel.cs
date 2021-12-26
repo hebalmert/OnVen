@@ -1,6 +1,7 @@
 ﻿using OnVen.Common.Entities;
 using OnVen.Common.Responses;
 using OnVen.Common.Services;
+using OnVen.Prism.Helpers;
 using OnVen.Prism.ItemViewModels;
 using Prism.Commands;
 using Prism.Mvvm;
@@ -38,7 +39,7 @@ namespace OnVen.Prism.ViewModels
         public ProductsPageViewModel(INavigationService navigationService,
             IApiService apiService) : base(navigationService)
         {
-            Title = "Products";
+            Title = Languages.Products;
             _navigationService = navigationService;
             _apiService = apiService;
             LoadProductAsync();
@@ -61,7 +62,7 @@ namespace OnVen.Prism.ViewModels
         {
             if (Connectivity.NetworkAccess != NetworkAccess.Internet)
             {
-                await App.Current.MainPage.DisplayAlert("Error", "Check the internet connection", "Accept");
+                await App.Current.MainPage.DisplayAlert(Languages.Error, Languages.ConnectionError, Languages.Accept);
                 return;
             }
 
@@ -71,7 +72,7 @@ namespace OnVen.Prism.ViewModels
             IsRunning = false;
             if (!response.IsSuccess)
             {
-                await App.Current.MainPage.DisplayAlert("Error", response.Message, "Accept");
+                await App.Current.MainPage.DisplayAlert(Languages.Error, response.Message, Languages.Accept);
                 return;
             }
 

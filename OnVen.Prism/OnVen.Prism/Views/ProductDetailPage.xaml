@@ -6,7 +6,8 @@
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
              ios:Page.UseSafeArea="true"
              xmlns:syncfusion="clr-namespace:Syncfusion.SfRotator.XForms;assembly=Syncfusion.SfRotator.XForms"
-             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"  
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" 
+              xmlns:i18n="clr-namespace:OnVen.Prism.Helpers"
              x:Class="OnVen.Prism.Views.ProductDetailPage"
              Title="{Binding Title}">
 
@@ -50,35 +51,35 @@
                     <Label Grid.Row="0"
                            Grid.Column="0"
                            FontAttributes="Bold"
-                           Text="Name"/>
+                           Text="{i18n:Translate Name}"/>
                     <Label Grid.Row="0"
                            Grid.Column="1"
                            Text="{Binding Product.Name}"/>
                     <Label Grid.Row="1"
                            Grid.Column="0"
                            FontAttributes="Bold"
-                           Text="Description"/>
+                           Text="{i18n:Translate Description}"/>
                     <Label Grid.Row="1"
                            Grid.Column="1"
                            Text="{Binding Product.Description}"/>
                     <Label Grid.Row="2"
                            Grid.Column="0"
                            FontAttributes="Bold"
-                           Text="Price"/>
+                           Text="{i18n:Translate Price}"/>
                     <Label Grid.Row="2"
                            Grid.Column="1"
                            Text="{Binding Product.Price, StringFormat='{0:C2}'}"/>
                     <Label Grid.Row="3"
                            Grid.Column="0"
                            FontAttributes="Bold"
-                           Text="Category"/>
+                           Text="{i18n:Translate Category}"/>
                     <Label Grid.Row="3"
                            Grid.Column="1"
                            Text="{Binding Product.Category.Name}"/>
                     <Label Grid.Row="4"
                            Grid.Column="0"
                            FontAttributes="Bold"
-                           Text="Is Starred"
+                           Text="{i18n:Translate IsStarred}"
                            VerticalOptions="Center"/>
                     <CheckBox Grid.Row="4"
                               Grid.Column="1"
