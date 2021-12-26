@@ -9,6 +9,7 @@
              xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" 
               xmlns:i18n="clr-namespace:OnVen.Prism.Helpers"
              x:Class="OnVen.Prism.Views.ProductDetailPage"
+             BackgroundColor="{StaticResource ColorBackground}"
              Title="{Binding Title}">
 
     <StackLayout Padding="5">
