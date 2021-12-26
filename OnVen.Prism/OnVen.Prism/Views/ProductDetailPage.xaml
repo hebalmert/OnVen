@@ -19,7 +19,7 @@
                                       ItemsSource="{Binding Images}"
                                       NavigationDelay="5000"
                                       NavigationDirection="Horizontal"
-                                      NavigationStripMode="Thumbnail"
+                                      NavigationStripMode="Dots"
                                       NavigationStripPosition="Bottom">
                     <syncfusion:SfRotator.ItemTemplate>
                         <DataTemplate>
