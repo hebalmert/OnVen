@@ -23,7 +23,7 @@ namespace OnVen.Prism
 
             InitializeComponent();
 
-            await NavigationService.NavigateAsync($"NavigationPage/{nameof(ProductsPage)}");
+            await NavigationService.NavigateAsync($"{nameof(OnVenMasterDetailPage)}/NavigationPage/{nameof(ProductsPage)}");
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
@@ -37,6 +37,10 @@ namespace OnVen.Prism
             containerRegistry.RegisterForNavigation<MainPage, MainPageViewModel>();
             containerRegistry.RegisterForNavigation<ProductsPage, ProductsPageViewModel>();
             containerRegistry.RegisterForNavigation<ProductDetailPage, ProductDetailPageViewModel>();
-        }
+            containerRegistry.RegisterForNavigation<LoginPage, LoginPageViewModel>();
+            containerRegistry.RegisterForNavigation<OnVenMasterDetailPage, OnVenMasterDetailPageViewModel>();
+            containerRegistry.RegisterForNavigation<ShowCarPage, ShowCarPageViewModel>();
+            containerRegistry.RegisterForNavigation<ShowHistoryPage, ShowHistoryPageViewModel>();
+            containerRegistry.RegisterForNavigation<ModifyUserPage, ModifyUserPageViewModel>();        }
     }
 }

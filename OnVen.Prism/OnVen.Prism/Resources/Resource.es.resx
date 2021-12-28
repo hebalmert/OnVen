@@ -141,6 +141,12 @@
   <data name="Loading" xml:space="preserve">
     <value>Cargando...</value>
   </data>
+  <data name="Login" xml:space="preserve">
+    <value>Iniciar Sesión</value>
+  </data>
+  <data name="ModifyUser" xml:space="preserve">
+    <value>Modificar usuario</value>
+  </data>
   <data name="Name" xml:space="preserve">
     <value>Nombre</value>
   </data>
@@ -155,5 +161,11 @@
   </data>
   <data name="SearchProduct" xml:space="preserve">
     <value>Buscar un producto...</value>
+  </data>
+  <data name="ShowPurchaseHistory" xml:space="preserve">
+    <value>Mostrar historial de compras</value>
+  </data>
+  <data name="ShowShoppingCar" xml:space="preserve">
+    <value>Mostrar carro de compras</value>
   </data>
 </root>
