@@ -1,4 +1,7 @@
-﻿using OnVen.Common.Models;
+﻿using Newtonsoft.Json;
+using OnVen.Common.Helpers;
+using OnVen.Common.Models;
+using OnVen.Common.Responses;
 using OnVen.Prism.Helpers;
 using OnVen.Prism.ItemViewModels;
 using OnVen.Prism.Views;
@@ -15,15 +18,32 @@ namespace OnVen.Prism.ViewModels
     public class OnVenMasterDetailPageViewModel : ViewModelBase
     {
         private readonly INavigationService _navigationService;
+        private UserResponse _user;
 
         public OnVenMasterDetailPageViewModel(INavigationService navigationService) : base(navigationService)
         {
             _navigationService = navigationService;
             LoadMenus();
-
+            LoadUser();
         }
 
         public ObservableCollection<MenuItemViewModel> Menus { get; set; }
+
+        public UserResponse User
+        {
+            get => _user;
+            set => SetProperty(ref _user, value);
+        }
+
+        private void LoadUser()
+        {
+            if (Settings.IsLogin)
+            {
+                TokenResponse token = JsonConvert.DeserializeObject<TokenResponse>(Settings.Token);
+                User = token.User;
+            }
+        }
+
 
         private void LoadMenus()
         {
@@ -59,7 +79,7 @@ namespace OnVen.Prism.ViewModels
             {
                 Icon = "ic_exit_to_app",
                 PageName = $"{nameof(LoginPage)}",
-                Title = Languages.Login
+               Title = Settings.IsLogin ? Languages.Logout : Languages.Login
             }
         };
 

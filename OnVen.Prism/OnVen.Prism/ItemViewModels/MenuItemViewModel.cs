@@ -1,4 +1,5 @@
-﻿using OnVen.Common.Models;
+﻿using OnVen.Common.Helpers;
+using OnVen.Common.Models;
 using OnVen.Prism.Views;
 using Prism.Commands;
 using Prism.Navigation;
@@ -22,6 +23,13 @@ namespace OnVen.Prism.ItemViewModels
 
         private async void SelectMenuAsync()
         {
+            if (PageName == nameof(LoginPage) && Settings.IsLogin)
+            {
+                Settings.IsLogin = false;
+                Settings.Token = null;
+            }
+
+
             await _navigationService.NavigateAsync($"/{nameof(OnVenMasterDetailPage)}/NavigationPage/{PageName}");
         }
 

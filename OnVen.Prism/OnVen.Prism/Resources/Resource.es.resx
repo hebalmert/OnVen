@@ -132,8 +132,20 @@
   <data name="Description" xml:space="preserve">
     <value>Descripción</value>
   </data>
+  <data name="Email" xml:space="preserve">
+    <value>Correo</value>
+  </data>
+  <data name="EmailError" xml:space="preserve">
+    <value>Debe Ingresar un Correo Valido</value>
+  </data>
+  <data name="EmailPlaceHolder" xml:space="preserve">
+    <value>Ingrese su Correo</value>
+  </data>
   <data name="Error" xml:space="preserve">
     <value>Error</value>
+  </data>
+  <data name="ForgotPassword" xml:space="preserve">
+    <value>Olvido Clave?</value>
   </data>
   <data name="IsStarred" xml:space="preserve">
     <value>Tiene estrellas</value>
@@ -144,11 +156,26 @@
   <data name="Login" xml:space="preserve">
     <value>Iniciar Sesión</value>
   </data>
+  <data name="LoginError" xml:space="preserve">
+    <value>Correo o Clave Erroneo</value>
+  </data>
+  <data name="Logout" xml:space="preserve">
+    <value>Salir</value>
+  </data>
   <data name="ModifyUser" xml:space="preserve">
     <value>Modificar usuario</value>
   </data>
   <data name="Name" xml:space="preserve">
     <value>Nombre</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>Calve</value>
+  </data>
+  <data name="PasswordError" xml:space="preserve">
+    <value>Debe Ingresar su Clave</value>
+  </data>
+  <data name="PasswordPlaceHolder" xml:space="preserve">
+    <value>Ingrese Clave</value>
   </data>
   <data name="Price" xml:space="preserve">
     <value>Precio</value>
@@ -158,6 +185,9 @@
   </data>
   <data name="Products" xml:space="preserve">
     <value>Productos</value>
+  </data>
+  <data name="Register" xml:space="preserve">
+    <value>Regisrar Usuario</value>
   </data>
   <data name="SearchProduct" xml:space="preserve">
     <value>Buscar un producto...</value>
