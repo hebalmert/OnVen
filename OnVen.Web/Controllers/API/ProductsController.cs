@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using OnVen.Web.Data;
+using OnVen.Web.Data.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,9 +22,16 @@ namespace OnVen.Web.Controllers.API
         }
 
         [HttpGet]
-        public IActionResult GetProducts()
+        public async Task<IActionResult> GetProducts()
         {
-            return Ok( _context.Products.Include(p=> p.ProductImages) );
+            List<Product> products = await _context.Products
+                .Include(p => p.Category)
+                .Include(p => p.ProductImages)
+                .Include(p => p.Qualifications)
+                .Where(p => p.IsActive)
+                .ToListAsync();
+            return Ok(products);
+
         }
     }
 }

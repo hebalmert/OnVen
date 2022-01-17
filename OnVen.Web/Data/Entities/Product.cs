@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using OnVen.Common.Entities;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -6,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OnVen.Common.Entities
+namespace OnVen.Web.Data.Entities
 {
     public class Product
     {
@@ -45,8 +46,17 @@ namespace OnVen.Common.Entities
         //TODO: Pending to put the correct paths
         [Display(Name = "Image")]
         public string ImageFullPath => ProductImages == null || ProductImages.Count == 0
-            ? $"http://onven.linkonext.com/Images/noimage.png"
+            ? $"https://localhost:44361/Images/noimage.png"
+            //? $"http://onven.linkonext.com/Images/noimage.png"
             : ProductImages.FirstOrDefault().ImageFullPath;
+
+        public ICollection<Qualification> Qualifications { get; set; }
+
+        [Display(Name = "Product Qualifications")]
+        public int ProductQualifications => Qualifications == null ? 0 : Qualifications.Count;
+
+        [DisplayFormat(DataFormatString = "{0:N2}")]
+        public float Qualification => Qualifications == null || Qualifications.Count == 0 ? 0 : Qualifications.Average(q => q.Score);
 
     }
 }

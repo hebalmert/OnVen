@@ -1,4 +1,4 @@
-﻿@model OnVen.Common.Entities.Product
+﻿@model OnVen.Web.Data.Entities.Product
 
 @{
     ViewData["Title"] = "Details";
@@ -45,8 +45,18 @@
                                 <p></p>
                             </div>
                             <div class="col-md-12">
+                                <strong>@Html.DisplayNameFor(model => model.Qualification):</strong>
+                                @Html.DisplayFor(model => model.Qualification)
+                                <p></p>
+                            </div>
+                            <div class="col-md-12">
                                 <strong>@Html.DisplayNameFor(model => model.ProductImagesNumber):</strong>
                                 @Html.DisplayFor(model => model.ProductImagesNumber)
+                                <p></p>
+                            </div>
+                            <div class="col-md-12">
+                                <strong>@Html.DisplayNameFor(model => model.ProductQualifications):</strong>
+                                @Html.DisplayFor(model => model.ProductQualifications)
                                 <p></p>
                             </div>
                             <p></p>
@@ -76,7 +86,7 @@
 <br />
 
 <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-8">
         <div class="shadow  bg-white rounded">
             <div class="card">
                 <div class="card-header"><h4>Image Gallery</h4></div>
@@ -102,6 +112,60 @@
                                         <button data-id="@item.ProductImageId" class="btn btn-outline-danger btn-sm deleteItem" data-toggle="modal" data-target="#deleteDialog"><i class="fa fa-trash-alt"></i></button>
                                     </td>
                                 </tr>
+                            }
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<br />
+
+<div class="row">
+    <div class="col-md-8">
+        <div class="shadow  bg-white rounded">
+            <div class="card">
+                <div class="card-header"><h4>Comentario</h4></div>
+                <div class="card-body">
+
+                    <table class="table table-responsive table-striped" id="MyTable">
+                        <thead>
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Qualifications.FirstOrDefault().DateLocal)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Qualifications.FirstOrDefault().User.Email)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Qualifications.FirstOrDefault().Score)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Qualifications.FirstOrDefault().Remarks)
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.Qualifications)
+                            {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.DateLocal)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.User.Email)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Score)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Remarks)
+                                </td>
+
+                            </tr>
                             }
                         </tbody>
                     </table>

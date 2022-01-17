@@ -34,8 +34,10 @@ namespace OnVen.Web.Data.Entities
         //TODO: Pending to put the correct paths
         [Display(Name = "Image")]
         public string ImageFullPath => ImageId == string.Empty
-            ? $"http://onven.linkonext.com/Images/noimage.png"
-            : $"http://onven.linkonext.com/Users/{ImageId}";
+            ? $"https://localhost:44361/Images/noimage.png"
+            : $"https://localhost:44361/Users/{ImageId}";
+            //? $"http://onven.linkonext.com/Images/noimage.png"
+            //: $"http://onven.linkonext.com/Users/{ImageId}";
 
         [Display(Name = "User Type")]
         public UserType UserType { get; set; }

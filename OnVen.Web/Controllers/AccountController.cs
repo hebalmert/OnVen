@@ -99,8 +99,9 @@ namespace OnVen.Web.Controllers
                     $"plase click in this link:</br></br><a href = \"{tokenLink}\">Confirm Email</a>");
                 if (response.IsSuccess)
                 {
-                    ViewBag.Message = "The instructions to allow your user has been sent to email.";
-                    return View(model);
+                    //ViewBag.Message = "The instructions to allow your user has been sent to email.";
+                    //return View(model);
+                    return RedirectToAction("ConfirmEmailSend");
                 }
 
                 ModelState.AddModelError(string.Empty, response.Message);
@@ -162,13 +163,13 @@ namespace OnVen.Web.Controllers
         }
 
         //Recuperacion de la Clave del Usuario con Token de Seguridad
-        public IActionResult RecoverPassword()
+        public IActionResult RecoverPasswordMVC()
         {
             return View();
         }
 
         [HttpPost]
-        public async Task<IActionResult> RecoverPassword(RecoverPasswordViewModel model)
+        public async Task<IActionResult> RecoverPasswordMVC(RecoverPasswordViewModel model)
         {
             if (ModelState.IsValid)
             {
@@ -404,14 +405,14 @@ namespace OnVen.Web.Controllers
             return View(model);
         }
 
-        public IActionResult ChangePassword()
+        public IActionResult ChangePasswordMVC()
         {
             return View();
         }
 
 
         [HttpPost]
-        public async Task<IActionResult> ChangePassword(ChangePasswordViewModel model)
+        public async Task<IActionResult> ChangePasswordMVC(ChangePasswordViewModel model)
         {
             if (ModelState.IsValid)
             {

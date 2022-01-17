@@ -15,6 +15,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Vereyon.Web;
 
 namespace OnVen.Web
 {
@@ -82,6 +83,8 @@ namespace OnVen.Web
             services.AddScoped<IConverterHelper, ConverterHelper>();
             services.AddScoped<ICombosHelper, CombosHelper>();
             services.AddScoped<IUserHelper, UserHelper>();
+            //Manejo de Mensajes Toast
+            services.AddFlashMessage();
 
             //Para poder usar el sistema de envio de correos
             services.AddScoped<IMailHelper, MailHelper>();

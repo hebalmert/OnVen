@@ -48,7 +48,7 @@
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-    <script type="text/javascript">
+<script type="text/javascript">
         $(document).ready(function () {
             $("#CountryId").change(function () {
                 $("#DepartmentId").empty();
@@ -59,13 +59,12 @@
                     type: 'POST',
                     url: '@Url.Action("GetDepartments")',
                     dataType: 'json',
-                    data: { countryId: $("#CountryId").val() },
-                    success: function (subcategories) {
-                        $.each(subcategories, function (i, department) {
-                            debugger;
+                    data: { idcontry: $("#CountryId").val() },
+                    success: function (data) {
+                        $.each(data, function (i, data) {
                             $("#DepartmentId").append('<option value="'
-                                + department.id + '">'
-                                + department.name + '</option>');
+                                + data.departmentId + '">'
+                                + data.name + '</option>');
                         });
                     },
                     error: function (ex) {
@@ -82,13 +81,12 @@
                     type: 'POST',
                     url: '@Url.Action("GetCities")',
                     dataType: 'json',
-                    data: { departmentId: $("#DepartmentId").val() },
-                    success: function (cities) {
-                        $.each(cities, function (i, city) {
-                            debugger;
+                    data: { IdDepartment: $("#DepartmentId").val() },
+                    success: function (data) {
+                        $.each(data, function (i, data) {
                             $("#CityId").append('<option value="'
-                                + city.id + '">'
-                                + city.name + '</option>');
+                                + data.cityId + '">'
+                                + data.name + '</option>');
                         });
                     },
                     error: function (ex) {
@@ -98,5 +96,5 @@
                 return false;
             })
         });
-    </script>
+</script>
 }

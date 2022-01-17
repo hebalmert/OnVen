@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using OnVen.Common.Entities;
 using OnVen.Web.Data;
+using OnVen.Web.Data.Entities;
 using OnVen.Web.Helper;
 using OnVen.Web.Models;
 using System;
@@ -36,6 +37,7 @@ namespace OnVen.Web.Controllers
             return View(await _context.Products
                 .Include(p => p.Category)
                 .Include(p => p.ProductImages)
+                .Include(p => p.Qualifications)
                 .ToListAsync());
         }
 
@@ -49,6 +51,8 @@ namespace OnVen.Web.Controllers
             Product product = await _context.Products
                 .Include(c => c.Category)
                 .Include(c => c.ProductImages)
+                .Include(c => c.Qualifications)
+                .ThenInclude(q => q.User)
                 .FirstOrDefaultAsync(m => m.ProductId == id);
             if (product == null)
             {

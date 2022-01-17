@@ -9,6 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Vereyon.Web;
 
 namespace OnVen.Web.Controllers
 {
@@ -18,14 +19,17 @@ namespace OnVen.Web.Controllers
         private readonly DataContext _context;
         private readonly IConverterHelper _converterHelper;
         private readonly IImageHelper _imageHelper;
+        private readonly IFlashMessage _flashMessage;
 
         public CategoriesController(DataContext context,
             IConverterHelper converterHelper,
-            IImageHelper imageHelper)
+            IImageHelper imageHelper,
+            IFlashMessage flashMessage)
         {
             _context = context;
             _converterHelper = converterHelper;
             _imageHelper = imageHelper;
+            _flashMessage = flashMessage;
         }
 
 
@@ -174,6 +178,9 @@ namespace OnVen.Web.Controllers
 
             try
             {
+                _context.Categories.Remove(DataRemove);
+                await _context.SaveChangesAsync();
+
                 if (DataRemove.ImageId != null)
                 {
                     string ruta = "wwwroot\\Categories";
@@ -184,8 +191,6 @@ namespace OnVen.Web.Controllers
                         return NotFound();
                     }
                 }
-                _context.Categories.Remove(DataRemove);
-                await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
 
             }
@@ -193,11 +198,13 @@ namespace OnVen.Web.Controllers
             {
                 if (dbUpdateException.InnerException.Message.Contains("REFERENCE"))
                 {
-                    ModelState.AddModelError(string.Empty, "Can't delete, Exist Reference with other Register");
+                    //ModelState.AddModelError(string.Empty, "Can't delete, Exist Reference with other Register");
+                    _flashMessage.Danger("Can't delete, Exist Reference with other Register");
                 }
                 else
                 {
-                    ModelState.AddModelError(string.Empty, dbUpdateException.InnerException.Message);
+                    _flashMessage.Danger(dbUpdateException.InnerException.Message);
+                    //ModelState.AddModelError(string.Empty, dbUpdateException.InnerException.Message);
                 }
             }
             catch (Exception e)
@@ -205,7 +212,7 @@ namespace OnVen.Web.Controllers
                 ModelState.AddModelError(string.Empty, e.Message);
             }
 
-            return View(DataRemove);
+            return RedirectToAction(nameof(Index));
         }
 
     }

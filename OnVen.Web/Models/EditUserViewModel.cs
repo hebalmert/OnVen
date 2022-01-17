@@ -39,9 +39,11 @@ namespace OnVen.Web.Models
         //TODO: Pending to put the correct paths
         [Display(Name = "Image")]
         public string ImageFullPath => ImageId == string.Empty
-            ? $"http://onven.linkonext.com/Images/noimage.png"
-            : $"http://onven.linkonext.com/users/{ImageId}";
+            ? $"https://localhost:44361/Images/noimage.png"
+            : $"https://localhost:44361/users/{ImageId}";
 
+            //? $"http://onven.linkonext.com/Images/noimage.png"
+            //: $"http://onven.linkonext.com/users/{ImageId}";
         //? $"https://onven.azurewebsites.net/images/noimage.png"
         //: $"https://onven.blob.core.windows.net/users/{ImageId}";
 
